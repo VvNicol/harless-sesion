@@ -15,6 +15,8 @@ public class LoginAuthenticator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String usuvalido = "admin";
 	private String pwdvalida = "1357";
+	private String usuvalido1 = "ET";
+	private String pwdvalida1 = "5555";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -39,18 +41,24 @@ public class LoginAuthenticator extends HttpServlet {
 		String pass=request.getParameter("pass");
 		if (usuario == null) usuario="";
 		if (pass == null) pass="";
-		boolean ok=false;
+		
 		
 		if(usuario.equals(usuvalido) && pass.equals(pwdvalida)) {
 			session.setAttribute("attributo2",usuario);
 			session.setAttribute("attributo1","1");
-			ok=true;
-		}
-				
-		if (ok) response.sendRedirect("bienvenido.jsp");
-		else response.sendRedirect("index.jsp");
+			response.sendRedirect("bienvenido.jsp");
+			
+		}else if(usuario.equals(usuvalido1) && pass.equals(pwdvalida1)) {
+			session.setAttribute("attributo2",usuario);
+			session.setAttribute("attributo1","1");
+			response.sendRedirect("micasa.jsp");
+		}else {
+            response.sendRedirect("index.jsp");
+        }
+		
 
 	}
+
 
 
 }
